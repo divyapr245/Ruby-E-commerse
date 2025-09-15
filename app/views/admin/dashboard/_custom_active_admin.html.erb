@@ -1,0 +1,17 @@
+
+
+<body>
+  <div id="wrapper">
+    <div id="active_admin_content">
+      <%= yield %>
+    </div>
+  </div>
+
+  <!-- ✅ Ensure Turbo Stream is Working -->
+  <%= turbo_stream_from "login_count_channel" %>
+
+  <!-- ✅ Live Login Count Section -->
+  <div id="live_login_count">
+    <%= render partial: "admin/dashboard/live_login_count", locals: { login_count: 0 } %>
+  </div>
+</body>

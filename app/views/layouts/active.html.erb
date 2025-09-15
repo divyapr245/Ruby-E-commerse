@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= [params[:controller].try(:titleize), params[:action].try(:titleize), 'ActiveAdmin'].compact.join(' - ') %></title>
+  
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  
+  <%= stylesheet_link_tag "active_admin" %>
+  <%= javascript_include_tag "active_admin" %>
+  
+  <!-- Critical: Add these for Turbo/Hotwire -->
+  <%= turbo_include_tags %>
+  <%= yield :head %>
+</head>
+<body class="active_admin logged_in">
+  <%= render "active_admin/header" %>
+  
+  <div id="wrapper">
+    <% if content_for?(:sidebar) %>
+      <div id="sidebar">
+        <%= yield(:sidebar) %>
+      </div>
+    <% end %>
+    
+    <div id="content_wrapper">
+      <div id="active_admin_content">
+        <!-- This is where the Turbo Stream connection must be -->
+        <%= turbo_stream_from "login_count_channel" %>
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+  
+  <%= render "active_admin/footer" %>
+</body>
+</html>

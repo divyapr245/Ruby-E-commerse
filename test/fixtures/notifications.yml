@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account: one
+  order: one
+  tite: MyString
+  message: MyText
+  read: false
+
+two:
+  account: two
+  order: two
+  tite: MyString
+  message: MyText
+  read: false

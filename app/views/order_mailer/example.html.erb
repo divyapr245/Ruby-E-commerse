@@ -1,0 +1,14 @@
+<h1>Thanks for your order!</h1>
+
+<p>We'd love your feedback for each item you purchased:</p>
+
+<ul>
+  <% @order.feedback_tokens.each do |entry| %>
+    <li>
+      Product Name <%= entry[:product_name] %>: 
+      <a href="http://localhost:3001/feedback_form/<%= entry[:token] %>">
+        Click here to give feedback
+      </a>
+    </li>
+  <% end %>
+</ul>
